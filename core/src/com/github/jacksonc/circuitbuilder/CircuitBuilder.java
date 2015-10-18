@@ -113,7 +113,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 		sprite.begin();
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
-			font.draw(sprite, info.name, info.x*32 + info.width*16 - 14, info.y*32 + 21);
+			font.draw(sprite, info.name, info.x*32 + info.width*16 - 13, info.y*32 + 21);
 		}
 		sprite.end();
 		
