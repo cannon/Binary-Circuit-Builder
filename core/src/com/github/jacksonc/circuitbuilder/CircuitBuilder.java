@@ -45,7 +45,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	    inputMultiplexer.addProcessor(inputHandler);
 	    Gdx.input.setInputProcessor(inputMultiplexer);
 	    
-	    table = new UiTable();
+	    table = new UiTable(manager);
 	    table.setFillParent(true);
 	    stage.addActor(table);
 	   // table.setDebug(true);
