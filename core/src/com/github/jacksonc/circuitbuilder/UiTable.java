@@ -31,16 +31,28 @@ public class UiTable extends Table {
 		        @Override
 		        public void changed (ChangeEvent event, Actor actor) {
 		            GateTypes gateType = GateTypes.valueOf(((TextButton)actor).getLabel().getText().toString());
-		            System.out.println(gateType.toString());
 		            InputHandler.action = Actions.MAKE;
 		            InputHandler.gateType = gateType;
 		        }
 		    });
 			
 			leftTable.add(button).space(20);
-			
 			leftTable.row();
 		}
+		
+		
+		TextButton button = new TextButton("Delete", uiSkin);
+		
+		button.addListener(new ChangeListener() {
+	        @Override
+	        public void changed (ChangeEvent event, Actor actor) {
+	            InputHandler.action = Actions.DELETE;
+	      
+	        }
+	    });
+		
+		leftTable.add(button).space(20);
+		leftTable.row();
 		
 	}
 }
