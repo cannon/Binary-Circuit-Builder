@@ -52,7 +52,7 @@ public class Manager {
 		}
 	}
 	
-	// Change how long each frame (a tick or tock) lasts.
+	// Change how long each frame (which is a tick or tock) lasts.
 	public void setTimePerFrame(float timePerFrame) {
 		this.timePerFrame = timePerFrame;
 	}
@@ -60,6 +60,10 @@ public class Manager {
 	//Returns reference to list of all gates
 	public Set<Gate> getGates() {
 		return gates;
+	}
+	
+	public void addGate(Gate gate) {
+		gates.add(gate);
 	}
 }
 
