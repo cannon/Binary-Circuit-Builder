@@ -1,5 +1,6 @@
 package com.github.jacksonc.circuitbuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class LogicGate implements Gate {
@@ -11,6 +12,7 @@ public abstract class LogicGate implements Gate {
 	
 	public LogicGate(int x,int y) {
 		drawInfo = new DrawInfo(x,y,2,1);
+		inputs = new ArrayList<Gate>();
 	}
 
 	@Override
