@@ -2,6 +2,11 @@ package com.github.jacksonc.circuitbuilder;
 
 public class MemoryCell extends LogicGate{
 	
+	public MemoryCell(int x, int y) {
+		super(x, y);
+		this.drawInfo.name = "MEM";
+	}
+
 	private boolean state = false;
 	
 	//If input at index 0 is true, this sets to false. If input at index 1 is

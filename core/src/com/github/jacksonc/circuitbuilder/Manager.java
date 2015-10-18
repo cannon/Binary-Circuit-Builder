@@ -18,7 +18,7 @@ public class Manager {
 	public void update(float deltaTime) {
 		timeSinceLastFrame += deltaTime;
 		if (timeSinceLastFrame >= timePerFrame) {
-			timeSinceLastFrame = 0f;
+			timeSinceLastFrame = timeSinceLastFrame - timePerFrame;
 			tick = !tick;
 			if (tick) {
 				tick();

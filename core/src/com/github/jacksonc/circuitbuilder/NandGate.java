@@ -2,6 +2,11 @@ package com.github.jacksonc.circuitbuilder;
 
 public class NandGate extends LogicGate {
 
+	public NandGate(int x, int y) {
+		super(x, y);
+		this.drawInfo.name = "NAND";
+	}
+
 	@Override
 	public void think() {
 		buffer = false;

@@ -7,12 +7,12 @@ public class DrawInfo {
 	public int height;
 	public String name;
 	
-	public DrawInfo(int x, int y, int width, int height, String name) {
+	public DrawInfo(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
-		this.name = name;
+		this.name = "";
 	}
 
 }
