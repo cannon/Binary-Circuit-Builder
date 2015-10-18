@@ -5,6 +5,8 @@ public class MemoryCell extends LogicGate{
 	public MemoryCell(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "MEM";
+		inputs.add(null);
+		inputs.add(null);
 	}
 
 	private boolean state = false;

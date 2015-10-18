@@ -99,6 +99,8 @@ public class Manager {
 			return addGate(new XorGate(x,y));
 		case TOGGLE:
 			return addGate(new ToggleGate(x,y));
+		case MEMORY:
+			return addGate(new MemoryCell(x,y));
 		default:
 			return null;
 		}
