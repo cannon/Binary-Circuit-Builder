@@ -85,7 +85,7 @@ public class InputHandler implements InputProcessor {
 					if(manager.findGate(x, info.y-1)) { make=false; }
 				}
 				
-				if(manager.findGate(info.x, info.y+info.height)) { make=false; }
+				if(manager.findGate(info.x, info.y+info.height) && info.hasOutput) { make=false; }
 				
 				if(make) { manager.makeGate(gateType,makeX,makeY); } 
 

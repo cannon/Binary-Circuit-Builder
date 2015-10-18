@@ -78,8 +78,8 @@ public class CircuitBuilder extends ApplicationAdapter {
 			for (int i = 0; i < g.getInputs().size(); i++) {
 				shape.box((info.x + i) * 32 + 10, (info.y + info.height - 1) * 32 - 12, 0, 12, 12, 0);
 			}
-			shape.box(info.x * 32 + 10, (info.y + info.height) * 32,	
-					0, 12, 12, 0);
+			if(info.hasOutput){ shape.box(info.x * 32 + 10, (info.y + info.height) * 32,	
+					0, 12, 12, 0); }
 		}
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();

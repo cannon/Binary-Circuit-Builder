@@ -114,7 +114,7 @@ public class Manager {
 				gateAtPointType = 1;
 				return true;
 			}
-			if(x==info.x && y==info.y+info.height) {
+			if(x==info.x && y==info.y+info.height && info.hasOutput) {
 				gateAtPoint = g;
 				gateAtPointType = 3;
 				return true;

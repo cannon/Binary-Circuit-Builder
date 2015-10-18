@@ -9,6 +9,7 @@ public class LightGate extends LogicGate {
 		this.drawInfo.name = "";
 		this.inputs.add(null);
 		drawInfo.hasOutput = false;
+		drawInfo.width = 1;
 		drawInfo.color = Color.RED;
 	}
 	
