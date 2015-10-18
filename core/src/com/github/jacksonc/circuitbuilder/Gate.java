@@ -10,4 +10,6 @@ public interface Gate {
 	public List<Gate> getInputs();
 	public DrawInfo getDrawInfo();
 	public int getMaxInputs();
+	
+	public void delete(Manager manager);
 }
