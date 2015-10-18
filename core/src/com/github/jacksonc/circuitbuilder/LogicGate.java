@@ -7,7 +7,13 @@ public abstract class LogicGate implements Gate {
 	public static enum GateTypes {
 		NOT,
 		AND,
-		OR
+		OR,
+		LIGHT,
+		NAND,
+		NOR,
+		ON,
+		XNOR,
+		XOR,
 	}
 	
 	protected boolean buffer;

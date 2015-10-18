@@ -5,6 +5,8 @@ public class XorGate extends LogicGate {
 	public XorGate(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "XOR";
+		this.inputs.add(null);
+		this.inputs.add(null);
 	}
 
 	@Override

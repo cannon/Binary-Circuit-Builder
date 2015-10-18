@@ -84,6 +84,26 @@ public class Manager {
 		case NOT:
 			gates.add(new NotGate(x,y));
 			break;
+		case LIGHT:
+			gates.add(new LightGate(x,y));
+			break;
+		case NAND:
+			gates.add(new NandGate(x,y));
+			break;
+		case NOR:
+			gates.add(new NorGate(x,y));
+			break;
+		case ON:
+			gates.add(new OnGate(x,y));
+			break;
+		case XNOR:
+			gates.add(new XnorGate(x,y));
+			break;
+		case XOR:
+			gates.add(new XorGate(x,y));
+			break;
+		default:
+			break;
 		}
 	}
 }

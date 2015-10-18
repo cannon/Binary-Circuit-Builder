@@ -5,6 +5,7 @@ public class LightGate extends LogicGate {
 	public LightGate(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "L";
+		this.inputs.add(null);
 	}
 
 	@Override

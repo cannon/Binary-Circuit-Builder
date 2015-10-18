@@ -5,6 +5,8 @@ public class XnorGate extends LogicGate {
 	public XnorGate(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "XNOR";
+		this.inputs.add(null);
+		this.inputs.add(null);
 	}
 
 	public void think() {
