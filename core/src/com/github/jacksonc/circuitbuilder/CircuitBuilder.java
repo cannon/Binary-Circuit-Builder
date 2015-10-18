@@ -59,7 +59,6 @@ public class CircuitBuilder extends ApplicationAdapter {
 		shape.begin(ShapeType.Filled);
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
-			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
 			for (int i = 0; i < g.getInputs().size(); i++) {
 				Gate input = g.getInputs().get(i);
 				DrawInfo inputsInfo = input.getDrawInfo();
@@ -69,21 +68,20 @@ public class CircuitBuilder extends ApplicationAdapter {
 				}
 				
 				//draws line between input and current gate
-				shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, inputsInfo.y * 32,
-						(info.x + i) * 32 + 16, (info.y + info.height) * 32, 4);
+				shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, (inputsInfo.y + inputsInfo.height) * 32,
+						(info.x + i) * 32 + 16, info.y * 32, 4);
 				
 				shape.setColor(Color.GRAY);
 				
-				//draws linking box on output side
-				shape.box((info.x + i) * 32 + 12, (info.y + info.height) * 32,	
-						0, 8, 8, 4);
+				//draws linking box on destination side
+				shape.box((info.x + i) * 32 + 12, (info.y + info.height - 1) * 32 - 8, 0, 8, 8, 0);
 				
 				//draws linking box on input side
-				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, inputsInfo.y * 32 - 8,	
-						0, 8, 8, 4);
-				
-				shape.setColor(Color.WHITE);
+				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, (inputsInfo.y + inputsInfo.height) * 32,	
+						0, 8, 8, 0);			
 			}
+			shape.setColor(Color.WHITE);
+			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
 		}
 		shape.end();
 		
