@@ -3,7 +3,8 @@ package com.github.jacksonc.circuitbuilder;
 import java.util.ArrayList;
 import java.util.List;
 
-//Controls the updating of the gates. Contains methods for adding
+// Controls the updating of the gates. Contains methods for connecting gates and changing
+// How much time occurs between tick/tock calls.
 
 public class Manager {
 	
