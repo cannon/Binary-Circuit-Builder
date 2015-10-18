@@ -66,16 +66,34 @@ public class InputHandler implements InputProcessor {
 		if(button==0){
 			switch(action){
 			case MAKE:
-				if(!manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
-					manager.makeGate(gateType,gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()));
+				int makeX = gridUnderScreenX(Gdx.input.getX());
+				int makeY = gridUnderScreenY(Gdx.input.getY());
+				LogicGate g = (LogicGate)manager.makeGate(gateType,makeX,makeY);
+				DrawInfo info = g.getDrawInfo();
+				int inputSize = g.getInputs().size();
+				manager.getGates().remove(g);
+				boolean make = true;
+				for(int x=info.x;x<info.x+info.width;x++){
+					for(int y=info.y;y<info.y+info.height;y++){
+						if(manager.findGate(x, y)) { make=false; }
+					}
 				}
-			
+				for(int x=info.x;x<info.x+inputSize;x++){
+					if(manager.findGate(x, info.y-1)) { make=false; }
+				}
+				
+				if(manager.findGate(info.x, info.y+info.height)) { make=false; }
+				
+				if(make) { manager.makeGate(gateType,makeX,makeY); } 
+
 				break;
 			case WIRE:
 				
 				break;
 			case DELETE:
-				
+				if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
+					manager.gateAtPoint.remove(manager);
+				}
 				break;
 			}
 		}

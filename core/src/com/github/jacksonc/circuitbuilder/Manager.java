@@ -74,41 +74,33 @@ public class Manager {
 		return gates;
 	}
 	
-	public void addGate(Gate gate) {
+	public Gate addGate(Gate gate) {
 		gates.add(gate);
+		return gate;
 	}
 	
-	public void makeGate(GateTypes gateType,int x,int y){
+	public Gate makeGate(GateTypes gateType,int x,int y){
 		switch(gateType){
 		case AND:
-			gates.add(new AndGate(x,y));
-			break;
+			return addGate(new AndGate(x,y));
 		case OR:
-			gates.add(new OrGate(x,y));
-			break;
+			return addGate(new OrGate(x,y));
 		case NOT:
-			gates.add(new NotGate(x,y));
-			break;
+			return addGate(new NotGate(x,y));
 		case LIGHT:
-			gates.add(new LightGate(x,y));
-			break;
+			return addGate(new LightGate(x,y));
 		case NAND:
-			gates.add(new NandGate(x,y));
-			break;
+			return addGate(new NandGate(x,y));
 		case NOR:
-			gates.add(new NorGate(x,y));
-			break;
+			return addGate(new NorGate(x,y));
 		case ON:
-			gates.add(new OnGate(x,y));
-			break;
+			return addGate(new OnGate(x,y));
 		case XNOR:
-			gates.add(new XnorGate(x,y));
-			break;
+			return addGate(new XnorGate(x,y));
 		case XOR:
-			gates.add(new XorGate(x,y));
-			break;
+			return addGate(new XorGate(x,y));
 		default:
-			break;
+			return null;
 		}
 	}
 	
