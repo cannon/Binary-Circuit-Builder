@@ -2,7 +2,7 @@ package com.github.jacksonc.circuitbuilder;
 
 public class MemoryCell extends LogicGate{
 	
-	private boolean state;
+	private boolean state = false;
 	
 	//If input at index 0 is true, this sets to false. If input at index 1 is
 	//true, this sets to true. If both are true or false, nothing changes.
