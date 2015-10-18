@@ -52,7 +52,7 @@ public class Manager {
 		}
 	}
 	
-	// Change how long each frame (a tick or tock) lasts.
+	// Change how long each frame (which is a tick or tock) lasts.
 	public void setTimePerFrame(float timePerFrame) {
 		this.timePerFrame = timePerFrame;
 	}
