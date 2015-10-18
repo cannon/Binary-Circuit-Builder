@@ -4,4 +4,5 @@ public interface Gate {
 	public boolean getOutput();
 	public void think();
 	public void talk();
+	public DrawInfo getDrawInfo();
 }
