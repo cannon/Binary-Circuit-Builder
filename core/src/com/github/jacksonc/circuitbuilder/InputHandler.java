@@ -121,8 +121,15 @@ public class InputHandler implements InputProcessor {
 						}
 						break;
 					}
-				}
+				} 
 				break;
+				case INTERACT: 
+					if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
+						if(manager.gateAtPointType==1 && manager.gateAtPoint instanceof InteractableGate) {
+							((InteractableGate)manager.gateAtPoint).interact();
+						}
+					}
+					break;
 			}
 		}
 		return false;
