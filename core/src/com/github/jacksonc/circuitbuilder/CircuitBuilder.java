@@ -103,8 +103,9 @@ public class CircuitBuilder extends ApplicationAdapter {
 			}
 		}
 		for (Gate g : manager.getGates()) {
-			shape.setColor(Color.WHITE);
+			
 			DrawInfo info = g.getDrawInfo();
+			shape.setColor(info.color);
 			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
 		}
 		shape.end();
