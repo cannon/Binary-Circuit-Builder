@@ -45,9 +45,7 @@ public class Manager {
 	
 	// Overloaded if you want to set an input at a certain point on the list.
 	public void connectGates(Gate source, Gate destination, int index) {
-		if (destination.getMaxInputs() == -1 || destination.getInputs().size() + 1 <= destination.getMaxInputs()) {
-			destination.getInputs().set(index, source);
-		}
+		destination.getInputs().set(index, source);
 	}
 	
 	// Tells all gates to think.
