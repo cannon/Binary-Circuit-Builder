@@ -11,6 +11,10 @@ public class WorldInputGate extends LogicGate {
 		//doesn't do anything in think.
 	}
 	
+	public void talk() {
+		
+	}
+	
 	public void setInitialState(boolean initialState) {
 		output = initialState;
 	}
