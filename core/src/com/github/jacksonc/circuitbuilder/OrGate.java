@@ -1,13 +1,13 @@
 package com.github.jacksonc.circuitbuilder;
 
-public class AndGate extends LogicGate {
+public class OrGate extends LogicGate {
 
 	@Override
 	public void think() {
-		buffer = true;
+		buffer = false;
 		for(Gate g : inputs) {
-			if(!Util.gateOutput(g)) {
-				buffer = false;
+			if(Util.gateOutput(g)) {
+				buffer = true;
 				return;
 			}
 		}
