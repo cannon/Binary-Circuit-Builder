@@ -11,4 +11,8 @@ public class XorGate extends LogicGate {
 	public void think() {
 		buffer = Util.gateOutput(inputs.get(0)) != Util.gateOutput(inputs.get(1));
 	}
+	
+	public int getMaxInputs() {
+		return 2;
+	}
 }

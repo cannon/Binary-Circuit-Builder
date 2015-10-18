@@ -10,4 +10,8 @@ public class NotGate extends LogicGate {
 	public void think() {
 		buffer = !Util.gateOutput(inputs.get(0));
 	}
+	
+	public int getMaxinputs() {
+		return 1;
+	}
 }

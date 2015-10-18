@@ -8,4 +8,5 @@ public interface Gate {
 	public void talk();
 	public List<Gate> getInputs();
 	public DrawInfo getDrawInfo();
+	public int getMaxInputs();
 }

@@ -19,5 +19,9 @@ public class WorldInputGate extends LogicGate {
 		output = initialState;
 	}
 	
+	public int getMaxInputs() {
+		return 0;
+	}
+	
 
 }
