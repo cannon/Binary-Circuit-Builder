@@ -5,6 +5,8 @@ public class OrGate extends LogicGate {
 	public OrGate(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "OR";
+		this.inputs.add(null);
+		this.inputs.add(null);
 	}
 
 	@Override

@@ -2,6 +2,9 @@ package com.github.jacksonc.circuitbuilder;
 
 import java.util.HashSet;
 import java.util.Set;
+import com.github.jacksonc.circuitbuilder.LogicGate.GateTypes;
+import com.github.jacksonc.circuitbuilder.InputHandler;
+import com.github.jacksonc.circuitbuilder.InputHandler.Actions;
 
 // Controls the updating of the gates. Contains methods for connecting gates and changing
 // how much time occurs between tick/tock calls.
@@ -35,10 +38,10 @@ public class Manager {
 		}
 	}
 	
-	// Overloaded if you want to insert an input at a certain point on the list.
+	// Overloaded if you want to set an input at a certain point on the list.
 	public void connectGates(Gate source, Gate destination, int index) {
 		if (destination.getMaxInputs() == -1 || destination.getInputs().size() + 1 <= destination.getMaxInputs()) {
-			destination.getInputs().add(index, source);
+			destination.getInputs().set(index, source);
 		}
 	}
 	
@@ -68,6 +71,20 @@ public class Manager {
 	
 	public void addGate(Gate gate) {
 		gates.add(gate);
+	}
+	
+	public void makeGate(GateTypes gateType,int x,int y){
+		switch(gateType){
+		case AND:
+			gates.add(new AndGate(x,y));
+			break;
+		case OR:
+			gates.add(new OrGate(x,y));
+			break;
+		case NOT:
+			gates.add(new NotGate(x,y));
+			break;
+		}
 	}
 }
 

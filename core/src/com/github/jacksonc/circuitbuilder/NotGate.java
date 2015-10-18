@@ -5,6 +5,8 @@ public class NotGate extends LogicGate {
 	public NotGate(int x, int y) {
 		super(x, y);
 		this.drawInfo.name = "NOT";
+		this.drawInfo.width = 1;
+		this.inputs.add(null);
 	}
 
 	public void think() {

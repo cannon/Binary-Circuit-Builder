@@ -7,6 +7,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.github.jacksonc.circuitbuilder.LogicGate.GateTypes;
+import com.github.jacksonc.circuitbuilder.InputHandler;
+import com.github.jacksonc.circuitbuilder.InputHandler.Actions;
 
 public class UiTable extends Table {
 	public Skin uiSkin;
@@ -30,6 +32,8 @@ public class UiTable extends Table {
 		        public void changed (ChangeEvent event, Actor actor) {
 		            GateTypes gateType = GateTypes.valueOf(((TextButton)actor).getLabel().getText().toString());
 		            System.out.println(gateType.toString());
+		            InputHandler.action = Actions.MAKE;
+		            InputHandler.gateType = gateType;
 		        }
 		    });
 			
