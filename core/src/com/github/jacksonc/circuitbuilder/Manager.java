@@ -15,6 +15,11 @@ public class Manager {
 	private float timeSinceLastFrame = 0f;
 	private boolean tick = false;
 	
+	//for getting gate data at a grid location
+	public static Gate gateAtPoint = null;
+	public static int gateAtPointType = 0; //1=gate 2=input 3=output
+	public static int gateAtPointInput = 0; //input index
+	
 	private Set<Gate> gates = new HashSet<Gate>();
 			
 	// Updates the game world to reflect change in time (use parameter deltaTime)
@@ -105,6 +110,32 @@ public class Manager {
 		default:
 			break;
 		}
+	}
+	
+	public boolean findGate(int x,int y) {
+		for (Gate g : gates) {
+			DrawInfo info = g.getDrawInfo();
+			if(x>=info.x && x<info.x+info.width && y>=info.y && y<info.y+info.height) {
+				gateAtPoint = g;
+				gateAtPointType = 1;
+				return true;
+			}
+			if(x==info.x && y==info.y+info.height) {
+				gateAtPoint = g;
+				gateAtPointType = 3;
+				return true;
+			}
+			if(x>=info.x && x<info.x+g.getInputs().size() && y==info.y-1) {
+				gateAtPoint = g;
+				gateAtPointType = 2;
+				gateAtPointInput = x-info.x;
+				return true;
+			}
+		}
+		gateAtPoint = null;
+		gateAtPointType = 0;
+		gateAtPointInput = 0;
+		return false;
 	}
 }
 

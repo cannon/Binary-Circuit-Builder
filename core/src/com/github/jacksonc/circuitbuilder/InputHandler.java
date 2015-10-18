@@ -66,7 +66,10 @@ public class InputHandler implements InputProcessor {
 		if(button==0){
 			switch(action){
 			case MAKE:
-				manager.makeGate(gateType,gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()));
+				if(!manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
+					manager.makeGate(gateType,gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()));
+				}
+			
 				break;
 			case WIRE:
 				
