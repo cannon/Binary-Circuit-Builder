@@ -44,7 +44,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render (float delta) {
+	public void render () {
 		inputHandler.update();
 		manager.update(Gdx.graphics.getDeltaTime());
 		Gdx.gl.glClearColor(1, 0, 0, 1);
@@ -83,14 +83,14 @@ public class CircuitBuilder extends ApplicationAdapter {
 		}
 		sprite.end();
 		
-		stage.act(delta);
+		//stage.act(delta);
 	    stage.draw();
 	}
 	
 	@Override
 	public void resize(int width, int height) {
 		camera.setToOrtho(false, width, height);
-		stage.getViewport().update(width, height, true);
+		//stage.getViewport().update(width, height, true);
 	}
 	
 	public void setCamera(float x, float y, float scale) {
