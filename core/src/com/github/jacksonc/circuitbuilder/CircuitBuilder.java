@@ -123,7 +123,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	@Override
 	public void resize(int width, int height) {
 		camera.setToOrtho(false, width, height);
-		//stage.getViewport().update(width, height, true);
+		stage.getViewport().update(width, height, true);
 	}
 	
 	public void setCamera(float x, float y, float scale) {
