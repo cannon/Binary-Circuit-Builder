@@ -26,8 +26,11 @@ public abstract class LogicGate implements Gate {
 		output = buffer;
 	}
 	
+	public List<Gate> getInputs() {
+		return inputs;
+	}
+
 	public DrawInfo getDrawInfo() {
 		return drawInfo;
 	}
-
 }
