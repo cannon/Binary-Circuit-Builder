@@ -30,7 +30,12 @@ public class Manager {
 
 	// Adds a source gate to a destination gate's list of inputs
 	public void connectGates(Gate source, Gate destination) {
-		destination.getInputs().add(source);
+		if (destination.getMaxInputs() == -1 || destination.getInputs().size() + 1 <= destination.getMaxInputs()) {
+			destination.getInputs().add(source);
+		} else {
+			System.out.println("You reached max inputs for this gate.");
+		}
+		
 	}
 	
 	// Overloaded if you want to insert an input at a certain point on the list.
