@@ -14,6 +14,7 @@ public abstract class LogicGate implements Gate {
 		ON,
 		XNOR,
 		XOR,
+		TOGGLE
 	}
 	
 	protected boolean buffer;
