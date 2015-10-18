@@ -67,6 +67,11 @@ public class Manager {
 		this.timePerFrame = timePerFrame;
 	}
 	
+	// Get how long each frame (which is a tick or tock) lasts.
+	public float getTimePerFrame() {
+		return timePerFrame;
+	}
+	
 	//Returns reference to list of all gates
 	public Set<Gate> getGates() {
 		return gates;

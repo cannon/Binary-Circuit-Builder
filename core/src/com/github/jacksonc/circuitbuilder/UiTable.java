@@ -14,7 +14,7 @@ import com.github.jacksonc.circuitbuilder.InputHandler.Actions;
 public class UiTable extends Table {
 	public Skin uiSkin;
 	public Table leftTable;
-	public UiTable() {
+	public UiTable(final Manager manager) {
 		super();
 		Skin uiSkin = new Skin(Gdx.files.internal("uiskin.json"));
 		
@@ -61,6 +61,26 @@ public class UiTable extends Table {
 			leftTable.add(button).space(spacing);
 			leftTable.row();
 		}
+		
+		TextButton speedButton = new TextButton("Speed: Medium", uiSkin);
+		speedButton.addListener(new ChangeListener() {
+			@Override
+			public void changed(ChangeEvent event, Actor actor) {
+				float time = manager.getTimePerFrame();
+				if (time == 0.1f) {
+					((TextButton) actor).setText("Speed: Fast");
+					manager.setTimePerFrame(0.02f);
+				} else if (time == 0.02f) {
+					manager.setTimePerFrame(0.5f);
+					((TextButton) actor).setText("Speed: Slow");
+				} else {
+					manager.setTimePerFrame(0.1f);
+					((TextButton) actor).setText("Speed: Medium");
+				}
+			}
+		});
+		
+		leftTable.add(speedButton).space(20);
 	}
 	
 	private void highlight(Actor actor) {
