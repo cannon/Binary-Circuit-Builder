@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class CircuitBuilder extends ApplicationAdapter {
 	private SpriteBatch batch;
@@ -21,6 +22,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private InputHandler inputHandler;
 	private Manager manager;
 	private BitmapFont font;
+	private Stage stage;
 	
 	@Override
 	public void create () {
@@ -77,11 +79,15 @@ public class CircuitBuilder extends ApplicationAdapter {
 			font.draw(sprite, info.name, info.x*32 + 8, info.y*32 + 21);
 		}
 		sprite.end();
+		
+		stage.act(delta);
+	    stage.draw();
 	}
 	
 	@Override
 	public void resize(int width, int height) {
 		camera.setToOrtho(false, width, height);
+		stage.getViewport().update(width, height, true);
 	}
 	
 	public void setCamera(float x, float y, float scale) {
@@ -89,6 +95,10 @@ public class CircuitBuilder extends ApplicationAdapter {
 		camera.position.y = y;
 		camera.zoom = scale;
 		camera.update();
+	}
+	
+	public void dispose() {
+	    stage.dispose();
 	}
 
 }
