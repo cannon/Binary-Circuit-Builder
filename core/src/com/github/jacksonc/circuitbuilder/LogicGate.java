@@ -8,12 +8,11 @@ public abstract class LogicGate implements Gate {
 		NOT,
 		AND,
 		OR,
-		LIGHT,
+		XOR,	
 		NAND,
 		NOR,
-		ON,
 		XNOR,
-		XOR,
+		LIGHT,
 		TOGGLE,
 		MEMORY
 	}

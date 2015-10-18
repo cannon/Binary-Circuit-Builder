@@ -10,12 +10,12 @@ public class LightGate extends LogicGate {
 		this.inputs.add(null);
 		drawInfo.hasOutput = false;
 		drawInfo.width = 1;
-		drawInfo.color = Color.RED;
+		drawInfo.color = Color.BROWN;
 	}
 	
 	@Override
 	public void talk() {
-		drawInfo.color = buffer ? Color.GREEN : Color.RED;
+		drawInfo.color = buffer ? Color.GREEN : Color.BROWN;
 	}
 
 	@Override

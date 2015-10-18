@@ -25,6 +25,8 @@ public class UiTable extends Table {
 		
 		this.add(leftTable.pad(20));
 		
+		int spacing = 14;
+		
 		for(GateTypes g : GateTypes.values()) {
 			TextButton button = new TextButton(g.toString(), uiSkin);
 	
@@ -39,7 +41,7 @@ public class UiTable extends Table {
 		        }
 		    });
 			
-			leftTable.add(button).space(20);
+			leftTable.add(button).space(spacing);
 			leftTable.row();
 		}
 		
@@ -56,7 +58,7 @@ public class UiTable extends Table {
 		        }
 		    });
 			
-			leftTable.add(button).space(20);
+			leftTable.add(button).space(spacing);
 			leftTable.row();
 		}
 	}

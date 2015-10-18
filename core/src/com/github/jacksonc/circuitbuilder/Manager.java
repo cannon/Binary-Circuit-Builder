@@ -91,8 +91,6 @@ public class Manager {
 			return addGate(new NandGate(x,y));
 		case NOR:
 			return addGate(new NorGate(x,y));
-		case ON:
-			return addGate(new OnGate(x,y));
 		case XNOR:
 			return addGate(new XnorGate(x,y));
 		case XOR:

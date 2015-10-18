@@ -76,10 +76,10 @@ public class CircuitBuilder extends ApplicationAdapter {
 			shape.setColor(Color.GRAY);
 			
 			for (int i = 0; i < g.getInputs().size(); i++) {
-				shape.box((info.x + i) * 32 + 10, (info.y + info.height - 1) * 32 - 12, 0, 12, 12, 0);
+				shape.box((info.x + i) * 32 + 10, (info.y + info.height - 1) * 32 - 12, 0, 12, 13, 0);
 			}
-			if(info.hasOutput){ shape.box(info.x * 32 + 10, (info.y + info.height) * 32,	
-					0, 12, 12, 0); }
+			if(info.hasOutput){ shape.box(info.x * 32 + 10, (info.y + info.height) * 32 - 1,	
+					0, 12, 13, 0); }
 		}
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
@@ -106,14 +106,14 @@ public class CircuitBuilder extends ApplicationAdapter {
 			
 			DrawInfo info = g.getDrawInfo();
 			shape.setColor(info.color);
-			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
+			shape.box(info.x*32 + 1, info.y*32 + 1, 0, info.width*32 - 2, info.height*32 - 2, 0);
 		}
 		shape.end();
 		
 		sprite.begin();
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
-			font.draw(sprite, info.name, info.x*32 + info.width*16 - 12, info.y*32 + 21);
+			font.draw(sprite, info.name, info.x*32 + info.width*16 - 14, info.y*32 + 21);
 		}
 		sprite.end();
 		
