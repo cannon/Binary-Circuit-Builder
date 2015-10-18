@@ -11,7 +11,7 @@ import com.github.jacksonc.circuitbuilder.InputHandler.Actions;
 
 public class Manager {
 	
-	private float timePerFrame = 0.0f; //Seconds between each tick/tock (timePerFrame * 2 is time between a single tick)
+	private float timePerFrame = 0.1f; //Seconds between each tick/tock (timePerFrame * 2 is time between a single tick)
 	private float timeSinceLastFrame = 0f;
 	private boolean tick = false;
 	
