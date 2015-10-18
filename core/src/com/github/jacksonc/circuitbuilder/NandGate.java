@@ -6,7 +6,7 @@ public class NandGate extends LogicGate {
 	public void think() {
 		buffer = false;
 		for(Gate g : inputs) {
-			if(!g.getOutput()) {
+			if(!Util.gateOutput(g)) {
 				buffer = true;
 				return;
 			}
