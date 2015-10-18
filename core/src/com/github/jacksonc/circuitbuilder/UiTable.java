@@ -43,7 +43,8 @@ public class UiTable extends Table {
 			leftTable.row();
 		}
 		
-		for(final Actions action : Actions.values()) {
+		for(int i = 1; i < Actions.values().length; ++i) {
+			final Actions action = Actions.values()[i];
 			TextButton button = new TextButton(action.toString(), uiSkin);
 			
 			button.addListener(new ChangeListener() {
