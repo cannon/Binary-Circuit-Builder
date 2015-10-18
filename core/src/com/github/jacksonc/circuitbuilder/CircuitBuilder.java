@@ -2,6 +2,7 @@ package com.github.jacksonc.circuitbuilder;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -12,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class CircuitBuilder extends ApplicationAdapter {
@@ -24,6 +26,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private Manager manager;
 	private BitmapFont font;
 	private Stage stage;
+	private Table table;
 	
 	@Override
 	public void create () {
@@ -31,10 +34,19 @@ public class CircuitBuilder extends ApplicationAdapter {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		shape = new ShapeRenderer();
 		sprite = new SpriteBatch();
+		
 		inputHandler = new InputHandler(this);
-		Gdx.input.setInputProcessor(inputHandler);
 	    stage = new Stage(new ScreenViewport());
-	   // Gdx.input.setInputProcessor(stage);
+	    InputMultiplexer inputMultiplexer = new InputMultiplexer();
+	    inputMultiplexer.addProcessor(stage);
+	    inputMultiplexer.addProcessor(inputHandler);
+	    Gdx.input.setInputProcessor(inputMultiplexer);
+	    
+	    table = new UiTable();
+	    table.setFillParent(true);
+	    stage.addActor(table);
+	   // table.setDebug(true);
+	    
 		renderer = new GridRenderer(sprite);
 		
 		manager = new Manager();
