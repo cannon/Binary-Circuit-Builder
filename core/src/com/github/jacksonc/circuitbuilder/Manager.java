@@ -61,6 +61,10 @@ public class Manager {
 	public Set<Gate> getGates() {
 		return gates;
 	}
+	
+	public void addGate(Gate gate) {
+		gates.add(gate);
+	}
 }
 
 
