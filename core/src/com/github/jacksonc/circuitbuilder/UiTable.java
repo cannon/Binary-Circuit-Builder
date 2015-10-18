@@ -69,3 +69,9 @@ public class UiTable extends Table {
         ((TextButton) actor).setColor(Color.YELLOW);
 	}
 }
+
+
+// Select gate types from list on the left.
+// Click on game world to add a gate.
+// Select wire and click and drag to connect gate notes (grey squares).
+// Select delete and click on a gate to delete it.
