@@ -41,7 +41,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	}
 
 	@Override
-	public void render () {
+	public void render (float delta) {
 		inputHandler.update();
 		manager.update(Gdx.graphics.getDeltaTime());
 		Gdx.gl.glClearColor(1, 0, 0, 1);
