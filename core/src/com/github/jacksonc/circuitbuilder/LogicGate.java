@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class LogicGate implements Gate {
+	public static enum GateTypes {
+		NOT,
+		AND,
+		OR
+	}
 	
 	protected boolean buffer;
 	protected boolean output;

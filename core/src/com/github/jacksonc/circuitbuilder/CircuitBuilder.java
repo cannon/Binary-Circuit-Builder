@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class CircuitBuilder extends ApplicationAdapter {
@@ -24,6 +25,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private Manager manager;
 	private BitmapFont font;
 	private Stage stage;
+	private Table table;
 	
 	@Override
 	public void create () {
@@ -34,7 +36,12 @@ public class CircuitBuilder extends ApplicationAdapter {
 		inputHandler = new InputHandler(this);
 		Gdx.input.setInputProcessor(inputHandler);
 	    stage = new Stage(new ScreenViewport());
-	   // Gdx.input.setInputProcessor(stage);
+	    Gdx.input.setInputProcessor(stage);
+	    table = new UiTable();
+	    table.setFillParent(true);
+	    stage.addActor(table);
+	   // table.setDebug(true);
+	    
 		renderer = new GridRenderer(sprite);
 		
 		manager = new Manager();
