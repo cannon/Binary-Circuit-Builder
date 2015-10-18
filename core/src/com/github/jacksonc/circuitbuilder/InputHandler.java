@@ -92,7 +92,7 @@ public class InputHandler implements InputProcessor {
 				break;
 			case DELETE:
 				if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
-					manager.gateAtPoint.remove(manager);
+					manager.gateAtPoint.delete(manager);
 				}
 				break;
 			}
