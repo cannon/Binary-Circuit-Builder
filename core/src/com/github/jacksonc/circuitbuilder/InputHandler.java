@@ -20,7 +20,6 @@ public class InputHandler implements InputProcessor {
 	public void update() {
 		// TODO Auto-generated method stub
 		if(this.dragging){
-			System.out.println("draggin");
 			camX-=camZoom*(Gdx.input.getX()-lastMouseX);
 			camY+=camZoom*(Gdx.input.getY()-lastMouseY);
 		}
@@ -77,6 +76,7 @@ public class InputHandler implements InputProcessor {
 	public boolean scrolled(int amount) {
 		// TODO Auto-generated method stub
 		camZoom += amount * camZoom * 0.2f;
+		camZoom = Math.max(0.1f, Math.min(camZoom, 10f));
 		return false;
 	}
 
