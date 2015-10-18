@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 public class CircuitBuilder extends ApplicationAdapter {
 	private SpriteBatch batch;
@@ -32,6 +33,8 @@ public class CircuitBuilder extends ApplicationAdapter {
 		sprite = new SpriteBatch();
 		inputHandler = new InputHandler(this);
 		Gdx.input.setInputProcessor(inputHandler);
+	    stage = new Stage(new ScreenViewport());
+	   // Gdx.input.setInputProcessor(stage);
 		renderer = new GridRenderer(sprite);
 		
 		manager = new Manager();
