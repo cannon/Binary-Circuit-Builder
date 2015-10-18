@@ -43,34 +43,21 @@ public class UiTable extends Table {
 			leftTable.row();
 		}
 		
-		TextButton button = new TextButton("Wire", uiSkin);
-		
-		button.addListener(new ChangeListener() {
-	        @Override
-	        public void changed (ChangeEvent event, Actor actor) {
-	            InputHandler.action = Actions.WIRE;
-	            
-	            highlight(actor);
-	        }
-	    });
-		
-		leftTable.add(button).space(20);
-		leftTable.row();
-		
-		TextButton button2 = new TextButton("Delete", uiSkin);
-		
-		button2.addListener(new ChangeListener() {
-	        @Override
-	        public void changed (ChangeEvent event, Actor actor) {
-	            InputHandler.action = Actions.DELETE;   
-	            
-	            highlight(actor);
-	        }
-	    });
-		
-		leftTable.add(button2).space(20);
-		leftTable.row();
-		
+		for(final Actions action : Actions.values()) {
+			TextButton button = new TextButton(action.toString(), uiSkin);
+			
+			button.addListener(new ChangeListener() {
+		        @Override
+		        public void changed (ChangeEvent event, Actor actor) {
+		            InputHandler.action = action;
+		            
+		            highlight(actor);
+		        }
+		    });
+			
+			leftTable.add(button).space(20);
+			leftTable.row();
+		}
 	}
 	
 	private void highlight(Actor actor) {
