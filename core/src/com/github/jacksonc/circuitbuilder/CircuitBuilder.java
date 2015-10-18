@@ -13,6 +13,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private OrthographicCamera camera;
 	private ShapeRenderer shape;
+	private GridRenderer renderer;
 	
 	@Override
 	public void create () {
@@ -20,6 +21,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		shape = new ShapeRenderer();
 		shape.setAutoShapeType(true);
+		renderer = new GridRenderer(shape);
 	}
 
 	@Override
@@ -30,6 +32,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 		shape.setProjectionMatrix(camera.combined);
 		shape.begin();
 		shape.line(new Vector2(0.f, 0.f), new Vector2(100.f, 100.f));
+		renderer.render(camera.position.x, camera.position.y, camera.zoom);
 		shape.end();
 	}
 	
