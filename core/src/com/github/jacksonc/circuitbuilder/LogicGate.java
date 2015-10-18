@@ -20,5 +20,8 @@ public abstract class LogicGate implements Gate {
 	public void talk() {
 		output = buffer;
 	}
-
+	
+	public List<Gate> getInputList() {
+		return inputs;
+	}
 }
