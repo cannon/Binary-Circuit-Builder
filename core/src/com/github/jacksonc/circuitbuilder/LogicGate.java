@@ -39,15 +39,30 @@ public abstract class LogicGate implements Gate {
 		output = buffer;
 	}
 	
+	@Override
 	public List<Gate> getInputs() {
 		return inputs;
 	}
 
+	@Override
 	public DrawInfo getDrawInfo() {
 		return drawInfo;
 	}
 	
+	@Override
 	public int getMaxInputs() {
 		return -1;
+	}
+	
+	@Override
+	public void delete(Manager manager) {
+		for (Gate g : manager.getGates()) {
+			while (g.getInputs().contains(this)) {
+				int index = g.getInputs().indexOf(this);
+				g.getInputs().set(index, null);
+			}
+		}
+		
+		manager.getGates().remove(this);
 	}
 }
