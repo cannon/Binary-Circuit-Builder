@@ -60,16 +60,24 @@ public class CircuitBuilder extends ApplicationAdapter {
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
 			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
-			for (Gate input : g.getInputs()) { 
+			for (int i = 0; i < g.getInputs().size(); i++) {
+				Gate input = g.getInputs().get(i);
 				DrawInfo inputsInfo = input.getDrawInfo();
-				int correctedX = inputsInfo.x + inputsInfo.width;
 				
 				if (input.getOutput()) {
 					shape.setColor(Color.BLUE);
 				}
 				
-				shape.rectLine(correctedX * 32, inputsInfo.y * 32 + 16,
-						info.x * 32, info.y * 32 + 16, 4);
+				shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, inputsInfo.y * 32,
+						(info.x + i) * 32 + 16, (info.y + info.height) * 32, 4);
+				
+				shape.setColor(Color.GRAY);
+				
+				shape.box((info.x + i) * 32 + 12, (info.y + info.height) * 32,	
+						0f, 8, 8, 4f);
+				
+				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, inputsInfo.y * 32,	
+						0f, 8, 8, 4f);
 				
 				shape.setColor(Color.WHITE);
 			}
