@@ -10,7 +10,8 @@ public class InputHandler implements InputProcessor {
 	public static enum Actions {
 		MAKE,
 		WIRE,
-		DELETE
+		DELETE,
+		INTERACT
 	}
 	
 	public static Actions action = Actions.MAKE;
