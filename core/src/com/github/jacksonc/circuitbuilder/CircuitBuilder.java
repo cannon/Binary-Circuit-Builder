@@ -28,6 +28,8 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private Stage stage;
 	private Table table;
 	
+
+	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
@@ -49,8 +51,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	   // table.setDebug(true);
 	    
 		renderer = new GridRenderer(sprite);
-		
-		
+
 		
 		font = new BitmapFont();
 		font.setColor(Color.BLACK);
@@ -75,9 +76,6 @@ public class CircuitBuilder extends ApplicationAdapter {
 			for (int i = 0; i < g.getInputs().size(); i++) {
 				Gate input = g.getInputs().get(i);
 				
-				//draws linking box on destination side
-				shape.box((info.x + i) * 32 + 12, (info.y + info.height - 1) * 32 - 8, 0, 8, 8, 0);
-				
 				if(input!=null){
 					DrawInfo inputsInfo = input.getDrawInfo();
 					
@@ -87,18 +85,23 @@ public class CircuitBuilder extends ApplicationAdapter {
 					}
 					
 					//draws line between input and current gate
-					shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, (inputsInfo.y + inputsInfo.height) * 32,
+					shape.rectLine(inputsInfo.x * 32 + 16, (inputsInfo.y + inputsInfo.height) * 32,
 							(info.x + i) * 32 + 16, info.y * 32, 4);
 					
 				}
-				
-				
-							
+
 			}
+		}
+		for (Gate g : manager.getGates()) {
 			shape.setColor(Color.WHITE);
+			DrawInfo info = g.getDrawInfo();
 			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
 			shape.setColor(Color.GRAY);
-			shape.box(info.x * 32 + 16 - 4, (info.y + info.height) * 32,	
+			
+			for (int i = 0; i < g.getInputs().size(); i++) {
+				shape.box((info.x + i) * 32 + 12, (info.y + info.height - 1) * 32 - 8, 0, 8, 8, 0);
+			}
+			shape.box(info.x * 32 + 12, (info.y + info.height) * 32,	
 					0, 8, 8, 0);
 		}
 		shape.end();
@@ -130,5 +133,4 @@ public class CircuitBuilder extends ApplicationAdapter {
 	public void dispose() {
 	    stage.dispose();
 	}
-
 }
