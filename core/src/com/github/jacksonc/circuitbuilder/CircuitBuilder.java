@@ -68,16 +68,19 @@ public class CircuitBuilder extends ApplicationAdapter {
 					shape.setColor(Color.BLUE);
 				}
 				
+				//draws line between input and current gate
 				shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, inputsInfo.y * 32,
 						(info.x + i) * 32 + 16, (info.y + info.height) * 32, 4);
 				
 				shape.setColor(Color.GRAY);
 				
+				//draws linking box on output side
 				shape.box((info.x + i) * 32 + 12, (info.y + info.height) * 32,	
-						0f, 8, 8, 4f);
+						0, 8, 8, 4);
 				
-				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, inputsInfo.y * 32,	
-						0f, 8, 8, 4f);
+				//draws linking box on input side
+				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, inputsInfo.y * 32 - 8,	
+						0, 8, 8, 4);
 				
 				shape.setColor(Color.WHITE);
 			}
