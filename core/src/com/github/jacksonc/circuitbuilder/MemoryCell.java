@@ -17,4 +17,8 @@ public class MemoryCell extends LogicGate{
 		}
 		buffer = state;
 	}
+	
+	public int getMaxInputs() {
+		return 2;
+	}
 }

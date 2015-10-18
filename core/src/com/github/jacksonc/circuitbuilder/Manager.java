@@ -36,6 +36,7 @@ public class Manager {
 	// Overloaded if you want to insert an input at a certain point on the list.
 	public void connectGates(Gate source, Gate destination, int index) {
 		destination.getInputs().add(index, source);
+		//check if full
 	}
 	
 	// Tells all gates to think.

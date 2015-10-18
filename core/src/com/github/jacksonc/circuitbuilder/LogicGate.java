@@ -35,4 +35,8 @@ public abstract class LogicGate implements Gate {
 	public DrawInfo getDrawInfo() {
 		return drawInfo;
 	}
+	
+	public int getMaxInputs() {
+		return -1;
+	}
 }

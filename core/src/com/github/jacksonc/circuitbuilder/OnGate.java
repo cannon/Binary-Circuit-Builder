@@ -11,4 +11,8 @@ public class OnGate extends LogicGate {
 	public void think() {
 		buffer = true;
 	}
+	
+	public int getMaxInputs() {
+		return 0;
+	}
 }
