@@ -10,7 +10,7 @@ public abstract class LogicGate implements Gate {
 	protected DrawInfo drawInfo;
 	
 	public LogicGate(int x,int y) {
-		drawInfo = new DrawInfo(x,y,2,1,"GATE");
+		drawInfo = new DrawInfo(x,y,2,1);
 	}
 
 	@Override
