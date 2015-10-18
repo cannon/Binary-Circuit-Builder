@@ -1,7 +1,9 @@
 package com.github.jacksonc.circuitbuilder;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 // Controls the updating of the gates. Contains methods for connecting gates and changing
 // How much time occurs between tick/tock calls.
@@ -12,7 +14,7 @@ public class Manager {
 	private float timeSinceLastFrame = 0f;
 	private boolean tick = false;
 	
-	private List<Gate> gates = new ArrayList<Gate>();
+	private Set<Gate> gates = new HashSet<Gate>();
 	
 			
 	// Updates the game world to reflect change in time (use parameter deltaTime)
@@ -56,6 +58,11 @@ public class Manager {
 	// Change how long each frame (a tick or tock) lasts.
 	public void setTimePerFrame(float timePerFrame) {
 		this.timePerFrame = timePerFrame;
+	}
+	
+	//Returns reference to list of all gates
+	public Set<Gate> getGates() {
+		return gates;
 	}
 }
 
