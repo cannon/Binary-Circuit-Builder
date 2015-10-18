@@ -1,6 +1,7 @@
 package com.github.jacksonc.circuitbuilder;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -33,6 +34,8 @@ public class UiTable extends Table {
 		            GateTypes gateType = GateTypes.valueOf(((TextButton)actor).getLabel().getText().toString());
 		            InputHandler.action = Actions.MAKE;
 		            InputHandler.gateType = gateType;
+		            
+		            highlight(actor);
 		        }
 		    });
 			
@@ -40,30 +43,29 @@ public class UiTable extends Table {
 			leftTable.row();
 		}
 		
-		TextButton button = new TextButton("Wire", uiSkin);
-		
-		button.addListener(new ChangeListener() {
-	        @Override
-	        public void changed (ChangeEvent event, Actor actor) {
-	            InputHandler.action = Actions.WIRE;      
-	        }
-	    });
-		
-		leftTable.add(button).space(20);
-		leftTable.row();
-		
-		TextButton button2 = new TextButton("Delete", uiSkin);
-		
-		button2.addListener(new ChangeListener() {
-	        @Override
-	        public void changed (ChangeEvent event, Actor actor) {
-	            InputHandler.action = Actions.DELETE;      
-	        }
-	    });
-		
-		leftTable.add(button2).space(20);
-		leftTable.row();
-		
+		for(final Actions action : Actions.values()) {
+			TextButton button = new TextButton(action.toString(), uiSkin);
+			
+			button.addListener(new ChangeListener() {
+		        @Override
+		        public void changed (ChangeEvent event, Actor actor) {
+		            InputHandler.action = action;
+		            
+		            highlight(actor);
+		        }
+		    });
+			
+			leftTable.add(button).space(20);
+			leftTable.row();
+		}
+	}
+	
+	private void highlight(Actor actor) {
+		for (Actor children : actor.getParent().getChildren()) {
+        	((TextButton) children).setColor(Color.WHITE);
+        }
+        
+        ((TextButton) actor).setColor(Color.YELLOW);
 	}
 }
 
