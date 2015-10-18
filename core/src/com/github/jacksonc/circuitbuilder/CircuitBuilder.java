@@ -14,18 +14,22 @@ public class CircuitBuilder extends ApplicationAdapter {
 	private OrthographicCamera camera;
 	private ShapeRenderer shape;
 	private GridRenderer renderer;
+	private InputHandler inputHandler;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		shape = new ShapeRenderer();
+		inputHandler = new InputHandler(this);
+		Gdx.input.setInputProcessor(inputHandler);
 		shape.setAutoShapeType(true);
 		renderer = new GridRenderer(shape);
 	}
 
 	@Override
 	public void render () {
+		inputHandler.update();
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		
