@@ -6,7 +6,7 @@ public class AndGate extends LogicGate {
 	public void think() {
 		buffer = true;
 		for(Gate g : inputs) {
-			if(!g.getOutput()) {
+			if(!Util.gateOutput(g)) {
 				buffer = false;
 				return;
 			}
