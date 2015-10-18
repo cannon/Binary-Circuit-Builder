@@ -97,6 +97,8 @@ public class Manager {
 			return addGate(new XnorGate(x,y));
 		case XOR:
 			return addGate(new XorGate(x,y));
+		case TOGGLE:
+			return addGate(new ToggleGate(x,y));
 		default:
 			return null;
 		}
