@@ -15,6 +15,8 @@ public class InputHandler implements InputProcessor {
 	
 	public static Actions action = Actions.MAKE;
 	public static GateTypes gateType = GateTypes.AND;
+	public static Gate firstDragGate = null;
+	public static int firstDragInput = -1; //-1 means the output
 	
 	private CircuitBuilder circuitBuilder;
 	private Manager manager;
@@ -88,7 +90,17 @@ public class InputHandler implements InputProcessor {
 
 				break;
 			case WIRE:
-				
+				firstDragGate = null;
+				firstDragInput = -1;
+				if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
+					if(manager.gateAtPointType==2){
+						firstDragGate = manager.gateAtPoint;
+						firstDragInput = manager.gateAtPointInput;
+					}
+					if(manager.gateAtPointType==3){
+						firstDragGate = manager.gateAtPoint;
+					}
+				}
 				break;
 			case DELETE:
 				if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
@@ -104,6 +116,16 @@ public class InputHandler implements InputProcessor {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		// TODO Auto-generated method stub
 		if(button==1){ this.dragging=false; }
+		if(button==0 && action == Actions.WIRE && firstDragGate!=null ){
+			if(manager.findGate(gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()))){
+				if(manager.gateAtPointType==2 && firstDragInput==-1){
+					manager.connectGates(firstDragGate, manager.gateAtPoint, manager.gateAtPointInput);
+				}
+				if(manager.gateAtPointType==3 && firstDragInput>=0){
+					manager.connectGates(manager.gateAtPoint, firstDragGate, firstDragInput);
+				}
+			}
+		}
 		return false;
 	}
 

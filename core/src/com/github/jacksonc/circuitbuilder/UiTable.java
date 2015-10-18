@@ -40,18 +40,28 @@ public class UiTable extends Table {
 			leftTable.row();
 		}
 		
-		
-		TextButton button = new TextButton("Delete", uiSkin);
+		TextButton button = new TextButton("Wire", uiSkin);
 		
 		button.addListener(new ChangeListener() {
 	        @Override
 	        public void changed (ChangeEvent event, Actor actor) {
-	            InputHandler.action = Actions.DELETE;
-	      
+	            InputHandler.action = Actions.WIRE;      
 	        }
 	    });
 		
 		leftTable.add(button).space(20);
+		leftTable.row();
+		
+		TextButton button2 = new TextButton("Delete", uiSkin);
+		
+		button2.addListener(new ChangeListener() {
+	        @Override
+	        public void changed (ChangeEvent event, Actor actor) {
+	            InputHandler.action = Actions.DELETE;      
+	        }
+	    });
+		
+		leftTable.add(button2).space(20);
 		leftTable.row();
 		
 	}
