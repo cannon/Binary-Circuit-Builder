@@ -34,8 +34,9 @@ public class CircuitBuilder extends ApplicationAdapter {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		shape = new ShapeRenderer();
 		sprite = new SpriteBatch();
+		manager = new Manager();
 		
-		inputHandler = new InputHandler(this);
+		inputHandler = new InputHandler(this,manager);
 	    stage = new Stage(new ScreenViewport());
 	    InputMultiplexer inputMultiplexer = new InputMultiplexer();
 	    inputMultiplexer.addProcessor(stage);
@@ -49,7 +50,7 @@ public class CircuitBuilder extends ApplicationAdapter {
 	    
 		renderer = new GridRenderer(sprite);
 		
-		manager = new Manager();
+		
 		
 		font = new BitmapFont();
 		font.setColor(Color.BLACK);
@@ -73,34 +74,39 @@ public class CircuitBuilder extends ApplicationAdapter {
 			DrawInfo info = g.getDrawInfo();
 			for (int i = 0; i < g.getInputs().size(); i++) {
 				Gate input = g.getInputs().get(i);
-				DrawInfo inputsInfo = input.getDrawInfo();
-				
-				if (input.getOutput()) {
-					shape.setColor(Color.BLUE);
-				}
-				
-				//draws line between input and current gate
-				shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, (inputsInfo.y + inputsInfo.height) * 32,
-						(info.x + i) * 32 + 16, info.y * 32, 4);
-				
-				shape.setColor(Color.GRAY);
 				
 				//draws linking box on destination side
 				shape.box((info.x + i) * 32 + 12, (info.y + info.height - 1) * 32 - 8, 0, 8, 8, 0);
 				
-				//draws linking box on input side
-				shape.box(inputsInfo.x * 32 + inputsInfo.width * 16 - 4, (inputsInfo.y + inputsInfo.height) * 32,	
-						0, 8, 8, 0);			
+				if(input!=null){
+					DrawInfo inputsInfo = input.getDrawInfo();
+					
+					shape.setColor(Color.WHITE);
+					if (input.getOutput()) {
+						shape.setColor(Color.BLUE);
+					}
+					
+					//draws line between input and current gate
+					shape.rectLine(inputsInfo.x * 32 + inputsInfo.width * 16, (inputsInfo.y + inputsInfo.height) * 32,
+							(info.x + i) * 32 + 16, info.y * 32, 4);
+					
+				}
+				
+				
+							
 			}
 			shape.setColor(Color.WHITE);
 			shape.box(info.x*32, info.y*32, 0, info.width*32, info.height*32, 0);
+			shape.setColor(Color.GRAY);
+			shape.box(info.x * 32 + 16 - 4, (info.y + info.height) * 32,	
+					0, 8, 8, 0);
 		}
 		shape.end();
 		
 		sprite.begin();
 		for (Gate g : manager.getGates()) {
 			DrawInfo info = g.getDrawInfo();
-			font.draw(sprite, info.name, info.x*32 + 8, info.y*32 + 21);
+			font.draw(sprite, info.name, info.x*32 + info.width*16 - 12, info.y*32 + 21);
 		}
 		sprite.end();
 		

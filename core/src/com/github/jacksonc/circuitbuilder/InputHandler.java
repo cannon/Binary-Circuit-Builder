@@ -2,10 +2,22 @@ package com.github.jacksonc.circuitbuilder;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
+import com.github.jacksonc.circuitbuilder.LogicGate.GateTypes;
+import com.github.jacksonc.circuitbuilder.Manager;
 
 public class InputHandler implements InputProcessor {
 	
+	public static enum Actions {
+		MAKE,
+		WIRE,
+		DELETE
+	}
+	
+	public static Actions action = Actions.MAKE;
+	public static GateTypes gateType = GateTypes.AND;
+	
 	private CircuitBuilder circuitBuilder;
+	private Manager manager;
 	private int lastMouseX = 0;
 	private int lastMouseY = 0;
 	private boolean dragging = false;
@@ -13,8 +25,9 @@ public class InputHandler implements InputProcessor {
 	private float camY = 0f;
 	private float camZoom = 1f;
 
-	public InputHandler(CircuitBuilder circuitBuilder) {
+	public InputHandler(CircuitBuilder circuitBuilder,Manager manager) {
 		this.circuitBuilder = circuitBuilder;
+		this.manager = manager;
 	}
 
 	public void update() {
@@ -50,6 +63,19 @@ public class InputHandler implements InputProcessor {
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 		// TODO Auto-generated method stub
 		if(button==1){ this.dragging=true; }
+		if(button==0){
+			switch(action){
+			case MAKE:
+				manager.makeGate(gateType,gridUnderScreenX(Gdx.input.getX()),gridUnderScreenY(Gdx.input.getY()));
+				break;
+			case WIRE:
+				
+				break;
+			case DELETE:
+				
+				break;
+			}
+		}
 		return false;
 	}
 
@@ -79,5 +105,12 @@ public class InputHandler implements InputProcessor {
 		camZoom = Math.max(0.1f, Math.min(camZoom, 10f));
 		return false;
 	}
+	
+	public int gridUnderScreenX(int sx) {
+		return ((int)Math.floor(((((float)(sx-(Gdx.graphics.getWidth()/2)))*camZoom)+camX)/32f));
+	}
 
+	public int gridUnderScreenY(int sy) {
+		return ((int)Math.floor(((((float)((Gdx.graphics.getHeight()/2)-sy))*camZoom)+camY)/32f));
+	}
 }
