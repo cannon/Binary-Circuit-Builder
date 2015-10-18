@@ -7,4 +7,5 @@ public interface Gate {
 	public void think();
 	public void talk();
 	public List<Gate> getInputs();
+	public DrawInfo getDrawInfo();
 }

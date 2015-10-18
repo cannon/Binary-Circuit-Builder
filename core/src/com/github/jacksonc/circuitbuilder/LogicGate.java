@@ -7,6 +7,11 @@ public abstract class LogicGate implements Gate {
 	protected boolean buffer;
 	protected boolean output;
 	protected List<Gate> inputs;
+	protected DrawInfo drawInfo;
+	
+	public LogicGate(int x,int y) {
+		drawInfo = new DrawInfo(x,y,2,1,"GATE");
+	}
 
 	@Override
 	public boolean getOutput() {
@@ -23,5 +28,9 @@ public abstract class LogicGate implements Gate {
 	
 	public List<Gate> getInputs() {
 		return inputs;
+	}
+
+	public DrawInfo getDrawInfo() {
+		return drawInfo;
 	}
 }
