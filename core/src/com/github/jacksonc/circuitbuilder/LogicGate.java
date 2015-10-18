@@ -21,7 +21,7 @@ public abstract class LogicGate implements Gate {
 		output = buffer;
 	}
 	
-	public List<Gate> getInputList() {
+	public List<Gate> getInputs() {
 		return inputs;
 	}
 }
