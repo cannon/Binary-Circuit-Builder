@@ -11,9 +11,8 @@ import com.github.jacksonc.circuitbuilder.InputHandler.Actions;
 
 public class Manager {
 	
-	private float timePerFrame = 0.1f; //Seconds between each tick/tock (timePerFrame * 2 is time between a single tick)
+	private float timePerFrame = 0.2f; //Seconds between each tick/tock (timePerFrame * 2 is time between a single tick)
 	private float timeSinceLastFrame = 0f;
-	private boolean tick = false;
 	
 	//for getting gate data at a grid location
 	public static Gate gateAtPoint = null;
@@ -25,14 +24,16 @@ public class Manager {
 	// Updates the game world to reflect change in time (use parameter deltaTime)
 	public void update(float deltaTime) {
 		timeSinceLastFrame += deltaTime;
-		if (timeSinceLastFrame >= timePerFrame) {
-			timeSinceLastFrame = timeSinceLastFrame - timePerFrame;
-			tick = !tick;
-			if (tick) {
-				tick();
+		int max = 0;
+		while (timeSinceLastFrame >= timePerFrame && max<10) {
+			max++;
+			if(max>=10){
+				timeSinceLastFrame = 0;
 			} else {
-				tock();
+				timeSinceLastFrame = timeSinceLastFrame - timePerFrame;
 			}
+			tick();
+			tock();
 		}
 	}
 

@@ -19,6 +19,7 @@ public class ToggleGate extends InteractableGate {
 	public void interact() {
 		state = !state;
 		this.drawInfo.name = state ? "on" : "off";
+		this.drawInfo.color = state ? Color.YELLOW : Color.RED;
 		output = state;
 	}
 	

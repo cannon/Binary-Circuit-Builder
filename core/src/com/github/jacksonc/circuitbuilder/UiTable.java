@@ -67,14 +67,14 @@ public class UiTable extends Table {
 			@Override
 			public void changed(ChangeEvent event, Actor actor) {
 				float time = manager.getTimePerFrame();
-				if (time == 0.1f) {
+				if (time == 0.2f) {
 					((TextButton) actor).setText("Speed: Fast");
 					manager.setTimePerFrame(0.02f);
 				} else if (time == 0.02f) {
-					manager.setTimePerFrame(0.5f);
+					manager.setTimePerFrame(1.0f);
 					((TextButton) actor).setText("Speed: Slow");
 				} else {
-					manager.setTimePerFrame(0.1f);
+					manager.setTimePerFrame(0.2f);
 					((TextButton) actor).setText("Speed: Medium");
 				}
 			}
